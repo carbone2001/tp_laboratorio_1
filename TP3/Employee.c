@@ -15,7 +15,7 @@ Employee* employee_new()
 
     return emp;
 }
-Employee* employee_newParametros(char* idStr,char* nombreStr,char* sueldoStr,char* horasTrabajadasStr)
+Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr)
 {
     int error = 1;
     Employee* emp = (Employee*) malloc (sizeof(Employee));
@@ -25,9 +25,9 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* sueldoStr,cha
         {
             if(employee_setNombre(emp,nombreStr)==0)
             {
-                if(employee_setHorasTrabajadas(emp,nombreStr)==0)
+                if(employee_setHorasTrabajadas(emp,atoi(horasTrabajadasStr))==0)
                 {
-                    if(employee_setSueldo(emp,sueldoStr)==0)
+                    if(employee_setSueldo(emp,atoi(sueldoStr))==0)
                     {
                         error = 0;
 
@@ -35,7 +35,7 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* sueldoStr,cha
                 }
             }
         }
-        if (error = 1)
+        if (error)
         {
             free(emp);
             emp = NULL;
@@ -43,6 +43,31 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* sueldoStr,cha
     }
     return emp;
 }
+
+int employee_setNombre(Employee* this,char* nombre)
+{
+    int error = 1;
+    if(this != NULL && strlen(nombre)<128)
+    {
+        strcpy(this->nombre,nombre);
+        error = 0;
+    }
+
+    return error;
+}
+
+int employee_getNombre(Employee* this,char* nombre)
+{
+    int error = 1;
+    if (this != NULL || nombre!=NULL)
+    {
+        strcpy(nombre,this->nombre);
+        error = 0;
+    }
+    return error;
+}
+
+
 
 int employee_setSueldo(Employee* this,int sueldo)
 {
@@ -78,12 +103,35 @@ int employee_setId(Employee* this,int id)
     }
     return error;
 }
-int employee_getId(Employee* this,int* sueldo)
+int employee_getId(Employee* this,int* id)
 {
     int error = 1;
     if (this != NULL || id!=NULL)
     {
         *id = this->id;
+        error = 0;
+    }
+    return error;
+
+}
+
+int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
+{
+    int error = 1;
+
+    if(this != NULL && horasTrabajadas>=0)
+    {
+        this->horasTrabajadas = horasTrabajadas;
+        error = 0;
+    }
+    return error;
+}
+int employee_getHorasTrabajadas(Employee* this,int* horasTrabajdas)
+{
+    int error = 1;
+    if (this != NULL || horasTrabajdas!=NULL)
+    {
+        *horasTrabajdas = this->horasTrabajadas;
         error = 0;
     }
     return error;
