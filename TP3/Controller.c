@@ -15,7 +15,7 @@
 int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 {
     int error = 1;
-    LinkedList* nuevoEmpleado;
+    Employee* nuevoEmpleado;
     LinkedList* aux;
     char buffer[4][128];
     int cant;
@@ -44,13 +44,17 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 
                     break;
                 }
-                nuevoEmpleado = (LinkedList*)employee_newParametros(buffer[0],buffer[1],buffer[2],buffer[3]);
-                if(aux == NULL)
+                nuevoEmpleado = employee_newParametros(buffer[0],buffer[1],buffer[2],buffer[3]);
+                if(nuevoEmpleado == NULL)
                 {
                     break;
                 }
-                *(pArrayListEmployee+contador) = *nuevoEmpleado;
+                //*(pArrayListEmployee+contador) = *nuevoEmpleado;
+                ll_add(pArrayListEmployee,nuevoEmpleado);
                 contador++;
+
+                /*printf("nombre del empleado nuevo: %s",pArrayListEmployee->pFirstNode->pElement->nombre);
+                system("pause");*/
 
                 aux = (LinkedList*) realloc ( pArrayListEmployee,sizeof(Employee)*(contador+1));
                 if(aux==NULL)
