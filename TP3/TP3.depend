@@ -78,33 +78,35 @@
 	"LinkedList.h"
 	"Employee.h"
 
-1559677646 source:d:\escritorio\tp_laboratorio_1\tp3\controller.c
+1560015852 source:d:\escritorio\tp_laboratorio_1\tp3\controller.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"LinkedList.h"
 	"Employee.h"
+	"parser.h"
+	"inputs.h"
 
-1559592302 d:\escritorio\tp_laboratorio_1\tp3\linkedlist.h
+1559759358 d:\escritorio\tp_laboratorio_1\tp3\linkedlist.h
 
-1559600688 d:\escritorio\tp_laboratorio_1\tp3\employee.h
+1559759358 d:\escritorio\tp_laboratorio_1\tp3\employee.h
 
-1559604515 source:d:\escritorio\tp_laboratorio_1\tp3\main.c
+1560015859 source:d:\escritorio\tp_laboratorio_1\tp3\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Controller.h"
 	"Employee.h"
 
-1559592302 d:\escritorio\tp_laboratorio_1\tp3\controller.h
+1559759358 d:\escritorio\tp_laboratorio_1\tp3\controller.h
 
-1559592302 source:d:\escritorio\tp_laboratorio_1\tp3\parser.c
+1560015852 source:d:\escritorio\tp_laboratorio_1\tp3\parser.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Employee.h"
 
-1559600708 source:d:\escritorio\tp_laboratorio_1\tp3\employee.c
+1559759358 source:d:\escritorio\tp_laboratorio_1\tp3\employee.c
 	<stdlib.h>
 	"Employee.h"
 	<string.h>
@@ -139,4 +141,15 @@
 	<string.h>
 	"LinkedList.h"
 	"Employee.h"
+
+1559759358 d:\escritorio\tp_laboratorio_1\tp3\parser.h
+
+1560013125 source:d:\escritorio\tp_laboratorio_1\tp3\inputs.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"inputs.h"
+
+1560007963 d:\escritorio\tp_laboratorio_1\tp3\inputs.h
 

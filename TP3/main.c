@@ -21,55 +21,19 @@
 
 int main()
 {
-    int option = 0;
+    char *option;
+    option = (char*) malloc (sizeof(char)*5);
     LinkedList* listaEmpleados = ll_newLinkedList();
     if(listaEmpleados == NULL)
     {
-        printf("Memoria insuficiente");
+        printf("No se ha podido crear la lista de empleados. Reinicie el programa.\n\n");
         system("pause");
-        exit(1);
     }
 
 
 
-    do{
-        switch(option)
-        {
-            case 1:
-                if(controller_loadFromText("data.csv",listaEmpleados))
-                {
-                    printf("\nError al cargar desde texto");
-                    system("pause");
-                }
-                break;
-                case 2:
-                if(controller_loadFromBinary("data.csv",listaEmpleados))
-                {
-                    printf("\nError al cargar desde binario");
-                    system("pause");
-                }
-                break;
-                case 3:
-                break;
-                case 4:
-                break;
-                case 5:
-                break;
-                case 6:
-                break;
-                case 7:
-                break;
-                case 8:
-                break;
-                case 9:
-                break;
-                default:
-                    printf("\nOpcion invalida");
-                    system("cls");
-                    break;
-
-        }
-
+    do
+    {
         printf("\nMenu");
         printf("\n1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).");
         printf("\n2. Cargar los datos de los empleados desde el archivo data.csv (modo binario).");
@@ -81,9 +45,51 @@ int main()
         printf("\n8. Guardar los datos de los empleados en el archivo data.csv (modo texto).");
         printf("\n9. Guardar los datos de los empleados en el archivo data.csv (modo binario).");
         printf("\n10. Salir\n");
-        scanf("%d",&option);
+        fflush(stdin);
+        scanf("%s",option);
 
 
-    }while(option != 10);
+        switch(atoi(option))
+        {
+        case 1:
+            controller_loadFromText("data.csv",listaEmpleados);
+            break;
+        case 2:
+            controller_loadFromBinary("data.bin",listaEmpleados);
+            break;
+        case 3:
+            controller_addEmployee(listaEmpleados);
+            break;
+        case 4:
+            controller_editEmployee(listaEmpleados);
+            break;
+        case 5:
+            controller_removeEmployee(listaEmpleados);
+            break;
+        case 6:
+            controller_ListEmployee(listaEmpleados);
+            break;
+        case 7:
+            controller_sortEmployee(listaEmpleados);
+            break;
+        case 8:
+            //EXTRANIO PROBLEMA CON EL CANT Y LOS FPRINTF
+            controller_saveAsText("data.csv",listaEmpleados);
+            break;
+        case 9:
+            controller_saveAsBinary("data.bin",listaEmpleados);
+
+            break;
+        case 10:
+            ll_deleteLinkedList(listaEmpleados);
+            break;
+        default:
+            printf("\nOpcion invalida");
+            system("cls");
+            break;
+
+        }
+    }
+    while((atoi(option)) != 10);
     return 0;
 }
