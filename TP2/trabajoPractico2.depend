@@ -38,3 +38,16 @@
 	<stdlib.h>
 	"arrayEmployees.h"
 
+1560339372 source:c:\users\alumno\desktop\tp_laboratorio_1\tp2\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"arrayEmployees.h"
+
+1560339372 c:\users\alumno\desktop\tp_laboratorio_1\tp2\arrayemployees.h
+
+1560339372 source:c:\users\alumno\desktop\tp_laboratorio_1\tp2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"arrayEmployees.h"
+

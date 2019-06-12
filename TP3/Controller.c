@@ -11,7 +11,6 @@
  * \param path char*
  * \param pArrayListEmployee LinkedList*
  * \return int
- *
  */
 int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 {
@@ -164,10 +163,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
     char* newNombre;
     int newHorasTrabajadas;
     int newSueldo;
-
     newNombre = (char*) malloc (sizeof(char));
-
-
     printf("Ingrese ID del empleado a modificar: ");
     scanf("%d",&id);
     for(int i = 0; i<ll_len(pArrayListEmployee); i++)
@@ -354,7 +350,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
     }
     if(error)
     {
-        printf("\n\nError al listar los empleados");
+        printf("\n\nError al listar los empleados\n");
     }
     system("pause");
     system("cls");
@@ -432,10 +428,7 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
     pFile = fopen (path,"w");
     if(pFile != NULL)
     {
-        /*cant = */fprintf(pFile,"\nid,nombre,horasTrabajdas,sueldo\n");
-        /*printf("\ncant 1 = %d",cant);
-        system("pause");*/
-
+        fprintf(pFile,"\nid,nombre,horasTrabajdas,sueldo\n");
         for(int i=0; i<ll_len(pArrayListEmployee); i++)
         {
             emp = ll_get(pArrayListEmployee,i);
@@ -444,18 +437,7 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
                 error = 1;
                 break;
             }
-            //fseek(pFile,(long)sizeof(Employee),SEEK_SET);
-
-
-            /*cant = */fprintf(pFile,"%d,%s,%d,%d\n",emp->id,emp->nombre,emp->horasTrabajadas,emp->sueldo);
-            //printf("\ncant 2 = %d\n",cant);
-
-            /*if(cant != 4)
-            {
-                error = 1;
-                break;
-            }*/
-            //printf("%d,%s,%d,%d\n",emp->id,emp->nombre,emp->horasTrabajadas,emp->sueldo);
+            fprintf(pFile,"%d,%s,%d,%d\n",emp->id,emp->nombre,emp->horasTrabajadas,emp->sueldo);
         }
         system("pause");
     }
