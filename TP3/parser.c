@@ -17,7 +17,7 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
     int cant;
     Employee* nuevoEmpleado;
     error = 0;
-    if(pFile != NULL)
+    if(pFile != NULL && pArrayListEmployee != NULL)
     {
         //Leida fantasma
         cant = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",buffer[0],buffer[1],buffer[2],buffer[3]);
@@ -68,6 +68,7 @@ int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
     Employee *emp;
     int error = 1;
     int cant;
+    if(pFile != NULL && pArrayListEmployee != NULL)
     while(!feof(pFile))
     {
         emp = (Employee*) malloc (sizeof(Employee));
