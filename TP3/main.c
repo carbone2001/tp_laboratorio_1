@@ -22,6 +22,7 @@
 int main()
 {
     char *option;
+    int retorno = 1;
     option = (char*) malloc (sizeof(char)*5);
     LinkedList* listaEmpleados = ll_newLinkedList();
     if(listaEmpleados == NULL)
@@ -29,8 +30,6 @@ int main()
         printf("No se ha podido crear la lista de empleados. Reinicie el programa.\n\n");
         system("pause");
     }
-
-
 
     do
     {
@@ -48,32 +47,54 @@ int main()
         fflush(stdin);
         scanf("%s",option);
 
-
         switch(atoi(option))
         {
         case 1:
-            controller_loadFromText("data.csv",listaEmpleados);
+            retorno = controller_loadFromText("data.csv",listaEmpleados);
             break;
         case 2:
-            controller_loadFromBinary("data.bin",listaEmpleados);
+            retorno = controller_loadFromBinary("data.bin",listaEmpleados);
             break;
         case 3:
-            controller_addEmployee(listaEmpleados);
+            retorno = controller_addEmployee(listaEmpleados);
             break;
         case 4:
+            if(retorno)
+            {
+                system("cls");
+                printf("\nPrimero debe cargar algun empleado\n");
+                break;
+            }
             controller_editEmployee(listaEmpleados);
             break;
         case 5:
+            if(retorno)
+            {
+                system("cls");
+                printf("\nPrimero debe cargar algun empleado\n");
+                break;
+            }
             controller_removeEmployee(listaEmpleados);
             break;
         case 6:
+            if(retorno)
+            {
+                system("cls");
+                printf("\nPrimero debe cargar algun empleado\n");
+                break;
+            }
             controller_ListEmployee(listaEmpleados);
             break;
         case 7:
+            if(retorno)
+            {
+                system("cls");
+                printf("\nPrimero debe cargar algun empleado\n");
+                break;
+            }
             controller_sortEmployee(listaEmpleados);
             break;
         case 8:
-            //EXTRANIO PROBLEMA CON EL CANT Y LOS FPRINTF
             controller_saveAsText("data.csv",listaEmpleados);
             break;
         case 9:
@@ -87,7 +108,6 @@ int main()
             printf("\nOpcion invalida");
             system("cls");
             break;
-
         }
     }
     while((atoi(option)) != 10);

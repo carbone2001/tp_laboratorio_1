@@ -86,11 +86,11 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 
     if((error = getString(nombre,"\nIngrese nombre del empleado: ","\nError. No debe superar los 127 caracteres: ",127)) == 0)
     {
-        if((error = getInt(sueldo,"\nIngrese sueldo: ","\nEl sueldo ingresado es invalido\n",0)) == 0)
+        if((error = getInt(sueldo,"\nIngrese sueldo: ","\nEl sueldo ingresado es invalido\n",1)) == 0)
         {
-            if((error = getInt(horasTrabajadas,"\nIngrese horas trabajdas: ","\nEl numero de horas ingresado es invalido",0)) == 0)
+            if((error = getInt(horasTrabajadas,"\nIngrese horas trabajdas: ","\nEl numero de horas ingresado es invalido\n",1)) == 0)
             {
-                if((error = getInt(id,"\nIngrese ID: ","\nEl ID ingresado es invalido",0)) == 0)
+                if((error = getInt(id,"\nIngrese ID: ","\nEl ID ingresado es invalido\n",1)) == 0)
                 {
                     error = 0;
                     for(int i=0; i<ll_len(pArrayListEmployee); i++)
@@ -103,7 +103,8 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
                         }
                         if(aux->id == *id)
                         {
-                            printf("\nEl ID ingresado ya exite. Intente ingresar otro");
+                            printf("\nEl ID ingresado ya exite. Intente ingresar otro\n");
+                            system("pause");
                             error = 1;
                         }
                     }
@@ -406,6 +407,7 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
         system("cls");
         printf("\nEl ordenamiento se ha realizado con exito!");
     }
+    free(aux);
     return 1;
 }
 
@@ -423,7 +425,6 @@ int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
     FILE* pFile;
     Employee* emp;
     int error = 0;
-    //int cant;
 
     pFile = fopen (path,"w");
     if(pFile != NULL)

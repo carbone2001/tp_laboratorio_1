@@ -91,11 +91,6 @@ int parser_EmployeeFromBinary(FILE* pFile, LinkedList* pArrayListEmployee)
         {
             break;
         }
-
-
-        //printf("\nemp = %d %s %d %d",emp->id,emp->nombre,emp->horasTrabajadas,emp->sueldo);
-
-
     }
     return error;
 }

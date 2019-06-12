@@ -51,33 +51,15 @@ int getIntIntentos(int* input,char* msj,char* eMsj,int minimo,int maximo,int rei
     return error;
 }
 
-/*int getInt(int*input,char*msj,char*eMsj,int minimo,int maximo)
-{
-    int error = 0;
-    printf("%s",msj);
-    scanf("%d",input);
-    if(minimo!=maximo)
-    {
-        if(*input>maximo || *input<minimo)
-        {
-            printf("%s",eMsj);
-            scanf("%d",input);
-        }
-        if(*input>maximo || *input<minimo)
-        {
-            error = 1;
-        }
-    }
-
-    return error;
-}*/
-
 int getInt(int* input,char*msj,char*eMsj,int minimo)
 {
+    char numS[12];
     int num;
     int error = 0;
     printf("%s",msj);
-    scanf("%d",&num);
+    fflush(stdin);
+    scanf("%s",numS);
+    num = atoi(numS);
 
     if(num < minimo)
     {
@@ -88,9 +70,8 @@ int getInt(int* input,char*msj,char*eMsj,int minimo)
     *input = num;
 
     return error;
+
 }
-
-
 
 int getRandom(int primerNumero, int ultimoNumero,int primeraVez)
 {
@@ -102,6 +83,7 @@ int getRandom(int primerNumero, int ultimoNumero,int primeraVez)
     random=primerNumero+(rand()%((ultimoNumero+1)-primerNumero));
     return random;
 }
+
 int getChar(char*msj,char letraCorrecta)
 {
     int confirmacion;
@@ -138,8 +120,6 @@ int getString(char* str,char*msj,char*eMsj,int limite)
         printf(eMsj);
         error=1;
     }
-
-
     return error;
 }
 
