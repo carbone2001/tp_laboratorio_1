@@ -16,7 +16,6 @@ int compareEmployee(void* pEmployeeA,void* pEmployeeB)
     }
     return 0;
 
-
 }
 
 void printEmployee(Employee* p)
@@ -55,3 +54,17 @@ Employee* newEmployee(int id, char name[],char lastName[],float salary,int secto
 
 }
 
+int compareEmployee2(void* pEmployeeA,void* pEmployeeB)
+{
+
+    if(strcmp(((Employee*)pEmployeeA)->lastName,((Employee*)pEmployeeB)->lastName)>0)
+    {
+        return 1;
+    }
+    if(strcmp(((Employee*)pEmployeeA)->lastName,((Employee*)pEmployeeB)->lastName)<0)
+    {
+        return -1;
+    }
+    return 0;
+
+}

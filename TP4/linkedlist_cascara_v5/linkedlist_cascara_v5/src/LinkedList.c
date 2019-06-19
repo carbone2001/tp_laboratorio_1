@@ -399,7 +399,7 @@ int ll_contains(LinkedList* this, void* pElement)
     if(this != NULL)
     {
         error = 0;
-        for(int i=0; i<ll_len(this);i++)
+        for(int i=0; i<ll_len(this); i++)
         {
             if(pElement == ll_get(this,i))
             {
@@ -428,9 +428,9 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
     if(this != NULL && this2 != NULL)
     {
         allFound = 0;
-        for(int i=0; i<ll_len(this2);i++)
+        for(int i=0; i<ll_len(this2); i++)
         {
-            for(int j=0; j<ll_len(this);j++)
+            for(int j=0; j<ll_len(this); j++)
             {
                 if(ll_get(this2,i) == ll_get(this,j))
                 {
@@ -511,7 +511,30 @@ LinkedList* ll_clone(LinkedList* this)
 int ll_sort(LinkedList* this, int (*pFunc)(void*,void*), int order)
 {
     int returnAux =-1;
+    void * aux = NULL;
 
+    if(this != NULL && pFunc != NULL && (order == 1 || order == 0))
+    {
+        for(int i=0; i<ll_len(this)-1; i++)
+        {
+            for(int j=i+1; j<ll_len(this); j++)
+            {
+                if(pFunc(ll_get(this,i),ll_get(this,j))==1 && order == 1)
+                {
+                    aux = ll_get(this,i);
+                    ll_set(this,i,ll_get(this,j));
+                    ll_set(this,j,aux);
+                }
+                else if(pFunc(ll_get(this,i),ll_get(this,j))==-1 && order == 0)
+                {
+                    aux = ll_get(this,i);
+                    ll_set(this,i,ll_get(this,j));
+                    ll_set(this,j,aux);
+                }
+            }
+        }
+        returnAux = 0;
+    }
     return returnAux;
 }
 
