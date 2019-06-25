@@ -351,15 +351,15 @@ int ll_isEmpty(LinkedList* this)
  */
 int ll_push(LinkedList* this, int index, void* pElement)
 {
-    int indice = -1;
+    int error = -1;
 
     if(this != NULL && index>=0 && index<=ll_len(this))
     {
-        indice = addNode(this,index,pElement);
+        error = addNode(this,index,pElement);
     }
 
 
-    return indice;
+    return error;
 }
 
 
